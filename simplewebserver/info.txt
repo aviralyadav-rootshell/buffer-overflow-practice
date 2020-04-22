@@ -1,5 +1,0 @@
-1===>  Getting Vulnerable Parameter
-       ==> used bed method HTTP
-       ==> vuln para :: "Connection: <buffer>"
-       
-       
