@@ -1,8 +1,8 @@
 1===>  Getting Vulnerable Parameter
-       ==> used bed method HTTP
+       ==> use $ bed with -s HTTP
        ==> vuln para :: "Connection: "+<buffer>+"\r\n\r\n"
        
-       ===> we had we use
+       ===> I had to use
                         ==> ==> ==> "GET / HTTP/1.1\r\n"  +   "Connection: "   +  <buffer>  +  "\r\n\r\n"
                         
 
