@@ -1,0 +1,47 @@
+1===>>  info gethering
+      a) $ nmap -p- <ip>
+      port==> 9999
+      
+      b) $nc -v <ip> <port>
+      on HELP
+      
+      get few parameters(command)
+      STATS [stat_value]
+      RTIME [rtime_value]
+      LTIME [ltime_value]
+      SRUN [srun_value]
+      TRUN [trun_value]
+      GMON [gmon_value]
+      GDOG [gdog_value]
+      KSTET [kstet_value]
+      GTER [gter_value]
+      HTER [hter_value]
+      LTER [lter_value]
+      KSTAN [lstan_value]
+      
+      
+      
+2===>  Vulnerable commands ==>
+        1==> KSTET 
+             size 10x7 bytes = 70          ==> offset : 70          >>>> failed to write exploit
+             
+        2==> GTER 
+             size 20x8=160                 ==> offset : 151 , varified   >>>> successful to jmp esp & executed \x90s; but exploit broken; <<unknown command>>
+             
+        3==> HTER 
+             size 300x7=2100               ==> can't understand , could be broken with 2109,2209 byte "A" but not with 2109,2209 byte pattern
+        
+        4==> "TRUN ."                      
+             size 100x19=1900              ==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell code: SUCCESS >> ***
+             
+        5 ==> "LTER ."                     
+             size 100x20 = 2000            ==> offset : 2006 & varified    >>>> failed to write exploit
+             
+           
+        6 ==> "GMON /"
+              size 150x27 = 4050 byte      ==>==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell code: SUCCESS >> ***
+
+
+3===>   
+
+      
