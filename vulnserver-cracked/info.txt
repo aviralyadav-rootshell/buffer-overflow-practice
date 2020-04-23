@@ -23,13 +23,16 @@
       
 2===>  Vulnerable commands ==>
         1==> KSTET 
-             size 10x7 bytes = 70          ==> offset : 70          >>>> failed to write exploit
-             
+             crashpoint 10x7 bytes = 70     ==> ==> ==> Exploit needed Egghunter, ***Developed , but not varified                                     *
+             offset : 70                                {(kernel-syscall   \xcd\x2e    can't work inside wine)}
         2==> GTER 
-             size 20x8=160                 ==> offset : 151 , varified   >>>> successful to jmp esp & executed \x90s; but exploit broken; <<unknown command>>
+             size 20x8=160                  ==> ==> ==> exploit needed Egghunter, ***Developed , but not varified                                     *
+             offset : 107                               {(kernel-syscall   \xcd\x2e    can't work inside wine)}
+                                                       
              
         3==> HTER 
-             size 300x7=2100               ==> ==> ==> *Direct use sent data in register without converting in of ASCII encodes; 
+             size 300x7=2100               ==> ==> ==> * Direct use sent data in register without converting in of ASCII encodes; 
+                                                                                                                << Gives Reverse shell : SUCCESS >>   ***
                                                        *** custom pattern should be used :::: pwd;pip
                                                        >>> python -i
                                                        >>> from pwn import cyclic
@@ -46,14 +49,14 @@
                                                        
         
         4==> "TRUN ."                      
-             size 100x19=1900              ==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell code: SUCCESS >> ***
+             size 100x19=1900              ==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell : SUCCESS >>   *** *
              
         5 ==> "LTER ."                     
-             size 100x20 = 2000            ==> offset : 2006 & varified    >>>> failed to write exploit
+             size 100x20 = 2000            ==> offset : 2006 & varified    >>>> failed to write exploit: <<< SEH >>>
              
            
         6 ==> "GMON /"
-              size 150x27 = 4050 byte      ==>==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell code: SUCCESS >> ***
+              size 150x27 = 4050 byte      ==>==> offset : 2006 &  buffer size must be > 4000 to write on EIP , << Gives non broking shell : SUCCESS >> *** *
 
 
 3===>   

